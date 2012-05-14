@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<instructionSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="file:///C:/LOGOInstructor/instructionSet.xsd">
+	<instructionSetName>Instruction set for square with different coloured sides</instructionSetName>
+	<version>1.0</version>
+	<author>Romeo Dickason</author>
+	<instructionSetDescription>Will draw a square with the sides four different colours and one side dashed.</instructionSetDescription>
+	<commands>
+		<command>
+			<commandDescription>Will draw the first side in red</commandDescription>
+			<actions>
+				<action>
+					<move>
+						<direction>forward</direction>
+						<distance>250</distance>
+						<color>red</color>
+					</move>
+				</action>
+			</actions>
+		</command>
+		<command>
+			<commandDescription>Turn the pointer right</commandDescription>
+			<actions>
+				<action>
+					<turn>
+						<direction>right</direction>
+						<angle>90</angle>
+					</turn>
+				</action>
+			</actions>
+		</command>
+		<command>
+			<commandDescription>Will draw the second side in blue - dotted</commandDescription>
+			<repeat>50</repeat>
+			<actions>
+				<action>
+					<move>
+						<direction>forward</direction>
+						<distance>5</distance>
+						<color>blue</color>
+					</move>
+				</action>
+				<action>
+					<move>
+						<direction>forward</direction>
+						<distance>5</distance>
+						<invisible>Y</invisible>
+					</move>
+				</action>				
+			</actions>
+		</command>
+		<command>
+			<commandDescription>Will draw the third side in green</commandDescription>
+			<actions>
+				<action>
+					<turn>
+						<direction>right</direction>
+						<angle>90</angle>
+					</turn>
+				</action>
+				<action>
+					<move>
+						<direction>forward</direction>
+						<distance>250</distance>
+						<color>green</color>
+					</move>
+				</action>
+			</actions>
+		</command>
+		<command>
+			<commandDescription>Will draw the fourth side in orange</commandDescription>
+			<actions>
+				<action>
+					<turn>
+						<direction>right</direction>
+						<angle>90</angle>
+					</turn>
+				</action>
+				<action>
+					<move>
+						<direction>forward</direction>
+						<distance>500</distance>
+						<color>orange</color>
+					</move>
+				</action>
+			</actions>
+		</command>
+	</commands>
+</instructionSet>

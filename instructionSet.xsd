@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!-- ************************************************************************* -->
+	<!-- definition of simple elements -->
+	<!-- ************************************************************************* -->
+	<xsd:element name="instructionSetName" type="xsd:string"/>
+	<xsd:element name="version" type="xsd:string"/>
+	<xsd:element name="author" type="xsd:string"/>
+	<xsd:element name="instructionSetDescription" type="xsd:string"/>
+	<xsd:element name="commandDescription" type="xsd:string"/>
+	<!-- ************************************************************************* -->
+	<!-- root element instructionSet -->
+	<!-- ************************************************************************* -->
+	<xsd:element name="instructionSet">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="instructionSetName"/>
+				<xsd:element ref="version"/>
+				<xsd:element ref="author"/>
+				<xsd:element ref="instructionSetDescription"/>
+				<xsd:element name="commands" type="Commands"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<!-- ************************************************************************* -->
+	<!-- Commands -->
+	<!-- ************************************************************************* -->
+	<xsd:complexType name="Commands">
+		<xsd:sequence>
+			<xsd:element name="command" minOccurs="1" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="commandDescription" type="xsd:string" minOccurs="0"/>
+						<!-- [Optional] How many times to repeat this specific command? Default is 1 cant be 0-->
+						<xsd:element name="repeat" minOccurs="0">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:positiveInteger">
+									<xsd:minInclusive value="2"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="actions" type="Actions"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- ************************************************************************* -->
+	<!-- Actions -->
+	<!-- ************************************************************************* -->
+	<xsd:complexType name="Actions">
+		<xsd:annotation>
+			<xsd:documentation>At least one of move or turn required. Could be both</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="action" minOccurs="1" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="move" type="moveType" minOccurs="0"/>
+						<xsd:element name="turn" type="turnType" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- ************************************************************************* -->
+	<!-- Move -->
+	<!-- ************************************************************************* -->
+	<xsd:complexType name="moveType">
+		<xsd:sequence>
+			<!-- [Mandatory] where? -->
+			<xsd:element name="direction">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="forward"/>
+						<xsd:enumeration value="back"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<!-- [Mandatory] how far? -->
+			<xsd:element name="distance">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:decimal">
+						<xsd:minInclusive value="1"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<!-- [Optional] Do not output to screen -->
+			<xsd:element name="invisible" minOccurs="0">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="Y"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<!-- [Optional] Use color other than black -->
+			<xsd:element name="color" minOccurs="0">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="blue"/>
+						<xsd:enumeration value="green"/>
+						<xsd:enumeration value="orange"/>
+						<xsd:enumeration value="red"/>
+						<xsd:enumeration value="yellow"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- ************************************************************************* -->
+	<!-- Turn -->
+	<!-- ************************************************************************* -->
+	<xsd:complexType name="turnType">
+		<xsd:sequence>
+			<!-- [Manadtory] Which direction -->
+			<xsd:element name="direction">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="left"/>
+						<xsd:enumeration value="right"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<!-- [Manadtory] What angel -->
+			<xsd:element name="angle">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:positiveInteger">
+						<xsd:minInclusive value="1"/>
+						<xsd:maxInclusive value="360"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

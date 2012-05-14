@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<instructionSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="file:///C:/LOGOInstructor/instructionSet.xsd">
+	<instructionSetName>Draws a fance circle with one quarter invisible and the other all a different colour.</instructionSetName>
+	<version>1.0</version>
+	<author>Romeo Dickason</author>
+	<instructionSetDescription>Draw a circle. First quarter: green. Second quarter: invisible (pen up). Third quarter: blue. Fourth quarter: orange.</instructionSetDescription>
+	<commands>
+		<command>
+			<commandDescription>Move forward so image does not fall off bottom of screen</commandDescription>
+			<actions>
+				<action>
+					<move>
+						<direction>forward</direction>
+						<distance>200</distance>
+						<invisible>Y</invisible>
+					</move>
+					<turn>
+						<direction>right</direction>
+						<angle>45</angle>
+					</turn>
+				</action>
+			</actions>
+		</command>
+		<command>
+			<commandDescription>Will draw the first quarter in green</commandDescription>
+			<repeat>90</repeat>
+			<actions>
+				<action>
+					<move>
+						<direction>forward</direction>
+						<distance>2</distance>
+						<color>green</color>
+					</move>
+				</action>
+				<action>
+					<turn>
+						<direction>right</direction>
+						<angle>1</angle>
+					</turn>
+				</action>
+			</actions>
+		</command>
+		<command>
+			<commandDescription>Will draw the second quarter - invisible (pen up)</commandDescription>
+			<repeat>90</repeat>
+			<actions>
+				<action>
+					<move>
+						<direction>forward</direction>
+						<distance>2</distance>
+						<invisible>Y</invisible>
+					</move>
+				</action>
+				<action>
+					<turn>
+						<direction>right</direction>
+						<angle>1</angle>
+					</turn>
+				</action>
+			</actions>
+		</command>
+		<command>
+			<commandDescription>Will draw the second third quarter in blue</commandDescription>
+			<repeat>90</repeat>
+			<actions>
+				<action>
+					<move>
+						<direction>forward</direction>
+						<distance>2</distance>
+						<color>blue</color>
+					</move>
+				</action>
+				<action>
+					<turn>
+						<direction>right</direction>
+						<angle>1</angle>
+					</turn>
+				</action>				
+			</actions>			
+		</command>
+		<command>
+			<commandDescription>Will draw the second third quarter in orange</commandDescription>
+			<repeat>90</repeat>
+			<actions>
+				<action>
+					<move>
+						<direction>forward</direction>
+						<distance>2</distance>
+						<color>orange</color>
+					</move>
+				</action>
+				<action>
+					<turn>
+						<direction>right</direction>
+						<angle>1</angle>
+					</turn>
+				</action>
+			</actions>
+		</command>
+	</commands>
+</instructionSet>

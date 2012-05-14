@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<instructionSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:///C:/LOGOInstructor/instructionSet.xsd">
+	<instructionSetName>Instruction set to draw a octagon.</instructionSetName>
+	<version>1.0</version>
+	<author>Romeo Dickason</author>
+	<instructionSetDescription>Draws an octagon with one command repeated 8 times.</instructionSetDescription>
+	<commands>
+		<command>
+			<commandDescription>Move forward so image does not fall off bottom of screen</commandDescription>
+			<actions>
+				<action>
+					<move>						
+						<direction>forward</direction>
+						<distance>200</distance>
+						<invisible>Y</invisible>
+					</move>
+				</action>
+			</actions>
+		</command>
+		<command>
+		<commandDescription>Will draw 8 lines with an angle of 45 to form an octagon</commandDescription>
+		<repeat>8</repeat>
+			<actions>
+				<action>
+					<move>
+						<direction>forward</direction>
+						<distance>100</distance>
+					</move>
+				</action>
+				<action>
+					<turn>
+						<direction>right</direction>
+						<angle>45</angle>
+					</turn>
+				</action>
+			</actions>
+		</command>
+	</commands>
+</instructionSet>
